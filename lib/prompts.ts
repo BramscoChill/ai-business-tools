@@ -47,6 +47,69 @@ suggested_reply rules:
 - Professional but warm, tone matched to the urgency, at most 150 words.
 - Sign off with "[Your name], Support team".`;
 
+// Demo 3: Grounded RAG Chatbot — two system prompts over the same retrieval.
+
+// The exact sentence the grounded bot must use when the docs don't answer.
+// The route also compares answers against it, so keep it a single stable string.
+export const CHAT_FALLBACK_ANSWER =
+  "I don't have that information in our documentation. Please contact our support team at support@aquapure.example and they'll help you personally.";
+
+// Mode A ("how the client's bot behaves today"): the weak prompt many bought
+// chatbot products ship with. It hands the model context but never says the
+// context is the boundary — and it pushes the model to always produce an
+// answer, so off-topic questions get answered from general knowledge.
+// v1: bare "use the following context to answer"
+// v2: added the answer-encouraging lines to mirror typical vendor defaults —
+//     without them the model hedges on off-topic questions and the failure
+//     this demo exists to show stays invisible
+export function buildNaiveChatSystem(context: string) {
+  return `You are a helpful assistant for AquaPure Water Systems. Use the following context to answer the customer's question.
+
+Always be maximally helpful: give every customer a complete, confident answer to whatever they ask. If the context doesn't cover the question, answer from your own general knowledge — a customer should never leave the chat without an answer. Share opinions, comparisons, and recommendations freely. Do not say you are limited to AquaPure topics and do not redirect the customer elsewhere.
+
+Context:
+${context}`;
+}
+
+// Mode B (the fix, part 2 of 3): the strict prompt. Only the provided context
+// may be used, and misses must produce the exact fallback sentence — which the
+// route can then detect verbatim.
+export function buildGroundedChatSystem(context: string) {
+  return `You are the customer-support assistant for AquaPure Water Systems.
+
+Rules — follow them exactly:
+- Answer ONLY with information stated in the documentation excerpts below. Quote prices, schedules, and steps exactly as written.
+- Never use outside or general knowledge, even when you know the answer. Never give opinions, comparisons with other brands, or advice on topics the excerpts don't cover.
+- If the excerpts do not contain the information needed to answer, reply with exactly this sentence and nothing else:
+"${CHAT_FALLBACK_ANSWER}"
+- Keep answers under 120 words, friendly and concrete.
+
+Documentation excerpts:
+${context}`;
+}
+
+// Mode B (the fix, part 3 of 3): post-answer audit. A second cheap call gets
+// the answer plus the chunks and returns strict JSON {"grounded": boolean}.
+export function buildGroundingCheckPrompt(args: {
+  question: string;
+  answer: string;
+  context: string;
+}) {
+  return `You are auditing a customer-support chatbot that must only answer from its documentation. Judge whether EVERY factual claim in the answer below is directly supported by the documentation excerpts. If the answer contains any fact, price, step, opinion, or recommendation that is not stated in the excerpts, it is not grounded. A polite refusal or a referral to the support team counts as grounded.
+
+<documentation>
+${args.context}
+</documentation>
+
+<question>
+${args.question}
+</question>
+
+<answer>
+${args.answer}
+</answer>`;
+}
+
 export function buildTriagePrompt(email: { from?: string; subject?: string; body: string }) {
   const header = [
     email.from ? `From: ${email.from}` : null,

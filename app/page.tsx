@@ -17,6 +17,14 @@ const demos: Demo[] = [
       "Paste a batch of support emails and get each one categorized, urgency-scored, and answered with a suggested reply draft.",
     live: true,
   },
+  {
+    slug: "grounded-chatbot",
+    icon: "💬",
+    title: "Grounded RAG Chatbot",
+    description:
+      "A broken support chatbot and its fix, side by side: watch one bot invent answers beyond its documents while the grounded one stays on-script.",
+    live: true,
+  },
 ];
 
 export default function Home() {
@@ -25,7 +33,7 @@ export default function Home() {
       <section className="text-center">
         <h1 className="text-3xl font-bold tracking-tight">AI Business Tools</h1>
         <p className="mx-auto mt-3 max-w-xl text-black/60 dark:text-white/60">
-          Two focused demos of AI eliminating manual back-office work. Pick an
+          Three focused demos of AI eliminating manual back-office work. Pick an
           application to try it — no sign-up, sample data included.
         </p>
       </section>

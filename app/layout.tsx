@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AI Business Tools",
   description:
-    "AI tools that eliminate manual work: invoice/receipt extraction & support inbox triage.",
+    "AI tools that eliminate manual work: invoice/receipt extraction, support inbox triage & a grounded RAG chatbot.",
 };
 
 export default function RootLayout({

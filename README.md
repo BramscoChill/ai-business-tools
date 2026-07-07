@@ -1,15 +1,16 @@
 # ai-business-tools
 
-AI tools that eliminate manual work: invoice/receipt extraction & support inbox triage. Live demo: https://ai-business-tools.vercel.app
+AI tools that eliminate manual work: invoice/receipt extraction, support inbox triage & a grounded RAG chatbot. Live demo: https://ai-business-tools.vercel.app
 
-## The two demos
+## The three demos
 
 | Demo | URL | What it does |
 |---|---|---|
 | 📄 Invoice/Receipt Extractor | <a href="https://ai-business-tools-two.vercel.app/invoice-extractor" target="_blank" rel="noopener noreferrer">/invoice-extractor</a> | Turns a PDF or photo of an invoice/receipt into an editable table you can export to CSV |
 | 📬 Support Inbox Triage | <a href="https://ai-business-tools-two.vercel.app/inbox-triage" target="_blank" rel="noopener noreferrer">/inbox-triage</a> | Categorizes a batch of support emails, scores urgency, reads sentiment, and drafts replies |
+| 💬 Grounded RAG Chatbot | <a href="https://ai-business-tools-two.vercel.app/grounded-chatbot" target="_blank" rel="noopener noreferrer">/grounded-chatbot</a> | Shows a document-based support chatbot that invents answers — and its fix — side by side |
 
-Both demos ask you to type a short distorted code (human check) right before processing starts — see [Abuse protection](#abuse-protection) below.
+All demos ask you to type a short distorted code (human check) right before processing starts — see [Abuse protection](#abuse-protection) below.
 
 ### 📄 Invoice/Receipt Extractor
 
@@ -64,6 +65,35 @@ Steps:
    - If an individual email fails, hit **↻ Retry** on that row — the rest of the batch is unaffected.
 7. Click **Triage another batch** to start over.
 
+### 💬 Grounded RAG Chatbot
+
+**The problem this demo shows:** a company puts a chatbot on its website that is supposed to answer from the company's own documents. Sometimes the bot "goes off" the documents and answers from the AI's general knowledge — it happily reviews competitors, gives plumbing advice, or invents policies. That looks bad in front of customers. This demo shows *why* it happens and *the fix*, side by side.
+
+Both bots read the same three documents for the fictional **AquaPure Water Systems** (a product guide, an installation/maintenance FAQ, and a troubleshooting guide — see [`content/aquapure/`](content/aquapure/)).
+
+Steps:
+
+1. Open [/grounded-chatbot](https://ai-business-tools-two.vercel.app/grounded-chatbot).
+2. Click one of the six preset questions (or type your own). 📗 questions are covered by the documents; 🚫 questions are not — those are the interesting ones.
+3. Complete the human check (first question only).
+4. The question is sent to **both bots at the same time**:
+   - **❌ Current bot (ungrounded)** — answers everything, including things the documents never say.
+   - **✅ Fixed bot (grounded)** — answers document questions normally, and for anything else replies: *"I don't have that information in our documentation. Please contact our support team…"*
+5. Open **Behind the scenes** under any answer to see the retrieval at work: the relevance score of the best-matching document chunk, whether it passed the threshold, which chunks were retrieved, and (for the fixed bot) the grounding-check verdict.
+6. Click **↺ Start a new conversation** to reset.
+
+#### The three fixes, in plain language
+
+The fixed bot layers three safeguards on top of the exact same documents:
+
+1. **Relevance gate** — before asking the AI anything, check how well the question actually matches the documents. If even the best match is weak, don't ask the AI at all: hand the customer to a human. (You can't invent an answer you were never asked to write.)
+2. **Strict instructions** — when the AI *is* asked, it is told: only use the documents, never use your own knowledge even if you know the answer, and if the documents don't cover it, say this exact hand-off sentence.
+3. **Answer audit** — after the AI answers, a second AI reads the answer next to the documents and gives a yes/no verdict: *is every claim in this answer actually in the documents?* If no, the answer is replaced with the hand-off sentence before the customer ever sees it.
+
+No extra infrastructure is needed for any of this — the document search is ~100 lines of plain TypeScript ([`lib/retrieval.ts`](lib/retrieval.ts)), no vector database or embeddings service involved.
+
+**Proof script:** with the dev server running, `npm run test-grounding` fires the preset questions at both bots and prints a table verifying the contrast — the ungrounded bot answers the off-topic questions while the grounded bot correctly declines them (and still answers the on-topic ones).
+
 ## Running locally
 
 ```bash
@@ -72,10 +102,10 @@ cp .env.example .env.local   # then fill in your ANTHROPIC_API_KEY
 npm run dev                  # http://localhost:3000
 ```
 
-The only required configuration is `ANTHROPIC_API_KEY` (get one at https://platform.claude.com).
+The only required configuration is `ANTHROPIC_API_KEY` (get one at https://platform.claude.com). Optionally, `GROUNDING_THRESHOLD` (0..1) overrides the grounded chatbot's relevance gate — the default is tuned for the bundled AquaPure documents.
 
 ## Abuse protection
 
-The AI endpoints (`/api/extract-invoice`, `/api/triage-inbox`) require a human-verification pass: the UI shows a distorted-code check before each processing action and exchanges the answer for a short-lived signed pass (`x-verify-pass` header). Direct/scripted calls without it get a 403, so scraped URLs can't burn API credits.
+The AI endpoints (`/api/extract-invoice`, `/api/triage-inbox`, `/api/grounded-chat`) require a human-verification pass: the UI shows a distorted-code check before each processing action and exchanges the answer for a short-lived signed pass (`x-verify-pass` header). Direct/scripted calls without it get a 403, so scraped URLs can't burn API credits.
 
 Tokens are signed with `CAPTCHA_SECRET` if set; otherwise a secret is derived (one-way hash) from `ANTHROPIC_API_KEY`, so no extra config is needed.

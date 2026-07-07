@@ -176,6 +176,13 @@ export default function InvoiceExtractorPage() {
           className="font-medium text-blue-600 hover:underline dark:text-blue-400"
         >
           📬 Support Inbox Triage →
+        </Link>{" "}
+        ·{" "}
+        <Link
+          href="/grounded-chatbot"
+          className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+        >
+          💬 Grounded RAG Chatbot →
         </Link>
       </p>
     </div>

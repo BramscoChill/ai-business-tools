@@ -35,3 +35,25 @@ export const TriageSchema = z.object({
 });
 
 export type Triage = z.infer<typeof TriageSchema>;
+
+// Demo 3: Grounded RAG Chatbot — one question, answered by one of two modes.
+export const ChatRequestSchema = z.object({
+  message: z.string().min(1).max(500),
+  mode: z.enum(["naive", "grounded"]),
+});
+
+export type ChatRequest = z.infer<typeof ChatRequestSchema>;
+
+// Strict JSON verdict for the post-answer grounding check (fix #3): a second,
+// cheap model call judges whether every claim is supported by the chunks.
+export const GroundingCheckSchema = z.object({
+  grounded: z.boolean(),
+});
+
+// "Behind the scenes" payload shown under every answer in the UI.
+export type ChatDebug = {
+  topScore: number; // best chunk's relevance, 0..1
+  thresholdPassed: boolean;
+  chunks: { title: string; score: number }[];
+  groundingVerdict: boolean | null; // null: check skipped (naive mode / fallback)
+};

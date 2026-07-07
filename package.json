@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "samples": "node scripts/generate-samples.mjs"
+    "samples": "node scripts/generate-samples.mjs",
+    "test-grounding": "node scripts/test-grounding.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
