@@ -6,8 +6,8 @@ AI tools that eliminate manual work: invoice/receipt extraction & support inbox 
 
 | Demo | URL | What it does |
 |---|---|---|
-| 📄 Invoice/Receipt Extractor | [/invoice-extractor](https://ai-business-tools-two.vercel.app/invoice-extractor) | Turns a PDF or photo of an invoice/receipt into an editable table you can export to CSV |
-| 📬 Support Inbox Triage | [/inbox-triage](https://ai-business-tools-two.vercel.app/inbox-triage) | Categorizes a batch of support emails, scores urgency, reads sentiment, and drafts replies |
+| 📄 Invoice/Receipt Extractor | <a href="https://ai-business-tools-two.vercel.app/invoice-extractor" target="_blank" rel="noopener noreferrer">/invoice-extractor</a> | Turns a PDF or photo of an invoice/receipt into an editable table you can export to CSV |
+| 📬 Support Inbox Triage | <a href="https://ai-business-tools-two.vercel.app/inbox-triage" target="_blank" rel="noopener noreferrer">/inbox-triage</a> | Categorizes a batch of support emails, scores urgency, reads sentiment, and drafts replies |
 
 Both demos ask you to type a short distorted code (human check) right before processing starts — see [Abuse protection](#abuse-protection) below.
 
