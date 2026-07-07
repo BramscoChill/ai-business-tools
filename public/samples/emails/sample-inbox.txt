@@ -1,0 +1,174 @@
+From: mark.jansen@brightlane.io
+Subject: URGENT - dashboard down for our entire team
+
+Hi,
+
+Since about 09:40 this morning nobody on our team (40+ people) can load the dashboard. We just get a spinning loader and then "Something went wrong". Console shows a bunch of 503s on /api/v2/widgets. We have a client demo at 14:00 CET and we are completely blocked.
+
+Is there an outage? Your status page says all systems operational, which clearly isn't true.
+
+Mark Jansen
+Head of Operations, Brightlane B.V.
++31 20 244 8891
+---
+From: security@meridianlabs.com
+Subject: Suspicious admin logins - possible account compromise
+
+Hello,
+
+Our admin user (d.okafor@meridianlabs.com) received three "new login from unrecognized device" notifications tonight between 02:10 and 02:25 UTC. The IPs geolocate to a country where we have no staff. We have rotated the password and revoked all sessions, but we urgently need:
+
+1. Confirmation whether those logins succeeded
+2. An audit log of any data accessed or exported in that window
+3. 2FA enforced workspace-wide (I can't find the setting)
+
+We handle regulated healthcare data, so depending on your answer to #2 we may have a mandatory breach-notification clock running. Please escalate to your security team, not first-line.
+
+Daniel Okafor
+CISO, Meridian Labs
+---
+From: sarah.mitchell@gmail.com
+Subject: RE: RE: CHARGED TWICE AND NO ONE ANSWERS
+
+This is now my THIRD email. You charged my Visa twice for the annual plan on June 28 ($588 total instead of $294 — transaction IDs 8823-1190 and 8823-1191, one minute apart). Two emails, zero response beyond your robot.
+
+I have now filed a dispute with my bank and I'm posting my experience on Trustpilot unless someone with a pulse replies by Friday with a refund confirmation.
+
+Sarah Mitchell
+
+> On Jun 30 you wrote: "We have received your request (#48213) and will respond within 2 business days"
+> On Jul 2 you wrote: "We have received your request (#48377) and will respond within 2 business days"
+---
+From: priya.n@studiokade.com
+Subject: Locked out - password reset loop (deadline today!!)
+
+Hi support,
+
+I can't get into my account at all. The reset email arrives, but the link bounces me back to the login page and my new password is never accepted ("token invalid or expired" — even when I click within seconds). Tried Chrome, Firefox, Safari, incognito, cleared cookies, different network. Same on mobile.
+
+Everything for a client deliverable due TODAY 17:00 is in this account. If there's any way to manually reset from your side or send me an export of my project files, I'll take anything.
+
+Priya Nair
+Studio Kade
+
+Sent from my iPhone
+---
+From: l.vermeulen@fintrack.nl
+Subject: CSV export breekt bij namen met accenten
+
+Beste support,
+
+Bij het exporteren naar CSV worden namen met accenten (zoals "Müller", "Renée", "João") verhaspeld tot tekens als "MÃ¼ller". In de webinterface staan ze wel goed, en de Excel-export is ook prima. Het lijkt dus een encoding-probleem (UTF-8 zonder BOM?) alleen in de CSV.
+
+Onze boekhouding importeert wekelijks in Exact Online en heeft echt CSV nodig, dus we corrigeren nu alles handmatig. Kunnen jullie hiernaar kijken?
+
+Met vriendelijke groet,
+Lotte Vermeulen
+FinTrack Administratie & Advies
+---
+From: james.wu@corvidhealth.com
+Subject: Fwd: Fwd: API rate limits killing our nightly sync
+
+Hi — forwarding from our engineering lead, see below. Short version: since your last release our nightly sync hits 429s after ~2,000 requests where the docs say the limit is 10,000/hr. Nothing changed on our side. Is this a bug, an undocumented change, or are we misreading the headers?
+
+We're on the Business plan. If the limit really dropped we need to know before we architect around it.
+
+James
+
+---------- Forwarded message ----------
+From: dev@corvidhealth.com
+The X-RateLimit-Remaining header starts at 2000 now, not 10000. Retry-After says 3600. Sync job that took 40 min now takes 6+ hours and overlaps with business hours. Logs attached in the ticket portal.
+---
+From: dwayne.roberts@outlook.com
+Subject: Third time asking for help
+
+I contacted your support on the 12th and again on the 19th and never got more than the automatic confirmation email. I don't even remember what my original question was about at this point — what I want to know now is whether anyone actually reads these. I pay $49/month for "priority support" according to your pricing page. This is not that.
+
+Dwayne
+---
+From: gdpr-requests@brenner-recht.de
+Subject: Art. 17 GDPR - Erasure request on behalf of our client
+
+Dear Sir or Madam,
+
+We represent Ms. Katharina Voss (account email: k.voss1988@web.de), who hereby requests the complete erasure of her personal data pursuant to Art. 17 GDPR, including backups, analytics profiles, and any data shared with processors. Please confirm completion in writing within 30 days, and provide a copy of her data (Art. 15) beforehand.
+
+Kindly acknowledge receipt of this request.
+
+Mit freundlichen Grüßen,
+RA Stefan Brenner
+Brenner Rechtsanwälte, München
+---
+From: tobias.keller@nordwind.dev
+Subject: Feature idea: webhook on export completion
+
+Hey team,
+
+Loving the product — genuinely saved us hours every week. One thing that would make it perfect: a webhook (or any callback, even an email with a signed URL) that fires when a scheduled export finishes, so our pipeline can pick the file up automatically instead of polling every 5 minutes like a caveman.
+
+Happy to beta test. No rush, just putting it on your radar.
+
+Cheers,
+Tobias
+---
+From: accounts@hollisandpartners.co.uk
+Subject: Invoice with VAT number needed + billing address change
+
+Hello,
+
+Two small things: (1) Could you send a proper PDF invoice for the June payment? We only got the payment confirmation email and our finance department needs an invoice showing your VAT number. (2) Our registered address changed — invoices should now read 14 Grafton Mews, London W1T 4DP. Can this be updated for future invoices too?
+
+Kind regards,
+Emma Hollis
+Hollis & Partners LLP
+---
+From: jake@peakform.fit
+Subject: Question about team plan limits before we upgrade
+
+Hi! Quick pre-sales question: the team plan says "up to 10 seats" — does that include read-only users or only editors? And if we grow, can we add an 11th seat at a per-seat price, or is it a forced jump to Business? Also is there a nonprofit/startup discount? We're a 6-person studio.
+
+Thanks!
+Jake
+---
+From: melissa.tran@apexlogistics.com
+Subject: Cancel our subscription
+
+Please cancel our Business subscription effective end of this billing cycle and confirm no further charges. We're consolidating tools after the merger — nothing wrong with the product. Do we lose access to historical exports immediately or at cycle end? We'd like to pull a full archive first.
+
+Melissa Tran
+Apex Logistics, Procurement
+---
+From: h.yamamoto@kiriko-trading.jp
+Subject: Screen reader problem in new update
+
+Hello, I am sorry for my English. Since update of last week, my colleague who use NVDA screen reader cannot use the filter menu. The menu items are not read aloud, only "button button button". Before update it worked. This is problem for us because accessibility is requirement in our company procurement. Can you fix or tell workaround?
+
+Thank you very much.
+Hiroshi Yamamoto
+---
+From: no-reply@mailer.getleadflow.example
+Subject: Boost your SaaS conversions by 340% 🚀
+
+Hi there! I noticed your company is doing great things in the analytics space. At LeadFlow we help B2B SaaS companies just like yours skyrocket demo bookings with AI-powered intent data. Do you have 15 minutes this week for a quick call? Here's my calendar link.
+
+Best,
+Chad Kowalski, Growth Executive
+Unsubscribe | 200 Continuation Way, Austin TX
+---
+From: rosa.delgado@yahoo.com
+Subject: Thank you + one small thing
+
+Hi team,
+
+Just wanted to say the new search is fantastic — so much faster, and the keyboard shortcuts are a lifesaver. One small thing: could it remember the last used filters between sessions? Not a big deal, but it would save me a few clicks every morning.
+
+Thanks for all the good work!
+Rosa
+---
+From: kevin.oduya@stratosgroup.com
+Subject: charts empty??
+
+numbers in all my charts show 0 since this morning but the table view has the right data. tried refresh + logout. quarterly review at 3pm, kind of need this. plan: Pro. browser: edge.
+
+kev
+(sent from mobile, sorry for brevity)
