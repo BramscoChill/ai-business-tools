@@ -6,8 +6,8 @@ AI tools that eliminate manual work: invoice/receipt extraction & support inbox 
 
 | Demo | URL | What it does |
 |---|---|---|
-| 📄 Invoice/Receipt Extractor | [/invoice-extractor](https://ai-business-tools.vercel.app/invoice-extractor) | Turns a PDF or photo of an invoice/receipt into an editable table you can export to CSV |
-| 📬 Support Inbox Triage | [/inbox-triage](https://ai-business-tools.vercel.app/inbox-triage) | Categorizes a batch of support emails, scores urgency, reads sentiment, and drafts replies |
+| 📄 Invoice/Receipt Extractor | [/invoice-extractor](https://ai-business-tools-two.vercel.app/invoice-extractor) | Turns a PDF or photo of an invoice/receipt into an editable table you can export to CSV |
+| 📬 Support Inbox Triage | [/inbox-triage](https://ai-business-tools-two.vercel.app/inbox-triage) | Categorizes a batch of support emails, scores urgency, reads sentiment, and drafts replies |
 
 Both demos ask you to type a short distorted code (human check) right before processing starts — see [Abuse protection](#abuse-protection) below.
 
@@ -15,7 +15,7 @@ Both demos ask you to type a short distorted code (human check) right before pro
 
 **Input:** one invoice or receipt as a PDF or image (JPEG, PNG, WebP, GIF), max 4 MB.
 
-1. Open [/invoice-extractor](https://ai-business-tools.vercel.app/invoice-extractor).
+1. Open [/invoice-extractor](https://ai-business-tools-two.vercel.app/invoice-extractor).
 2. Provide a document in one of two ways:
    - **Upload your own** — drag & drop it onto the dropzone, or click the dropzone to pick a file.
    - **Try a sample** — click one of the sample chips (SaaS invoice, retail receipt, two Dutch grocery/supermarket receipts, services invoice). The ⬇ button next to each chip downloads the sample so you can inspect it first.
@@ -52,8 +52,8 @@ Both demos ask you to type a short distorted code (human check) right before pro
 
 Steps:
 
-1. Open [/inbox-triage](https://ai-business-tools.vercel.app/inbox-triage).
-2. Paste emails, drop a file onto the dropzone, or click **📥 Load sample inbox** to fill the textarea with a ready-made batch. (Downloadable samples: [sample-inbox.txt](https://ai-business-tools.vercel.app/samples/emails/sample-inbox.txt) · [sample-inbox.csv](https://ai-business-tools.vercel.app/samples/emails/sample-inbox.csv).) Uploaded files land in the textarea first, so you can review and edit before processing.
+1. Open [/inbox-triage](https://ai-business-tools-two.vercel.app/inbox-triage).
+2. Paste emails, drop a file onto the dropzone, or click **📥 Load sample inbox** to fill the textarea with a ready-made batch. (Downloadable samples: [sample-inbox.txt](https://ai-business-tools-two.vercel.app/samples/emails/sample-inbox.txt) · [sample-inbox.csv](https://ai-business-tools-two.vercel.app/samples/emails/sample-inbox.csv).) Uploaded files land in the textarea first, so you can review and edit before processing.
 3. Click **Triage N emails** — the button shows how many emails were detected. Batches over 20 are truncated to the first 20.
 4. Complete the human check.
 5. Watch results stream in: emails are processed 5 at a time, and each row fills in as its result lands. Once the whole batch is done, rows are sorted by urgency (critical first).
